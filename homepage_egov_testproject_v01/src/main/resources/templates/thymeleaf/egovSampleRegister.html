@@ -8,7 +8,7 @@
 	<link id="contextPathHolder" th:data-contextPath="${#httpServletRequest.getContextPath()}"/>
 	<link type="text/css" rel="stylesheet" th:href="@{/css/egovframework/sample.css}"/>
 	<script type="text/javascript" th:src="@{/js/egovframework/jquery-3.6.1.min.js}"></script>
-<!-- 	<script type="text/javascript" th:src="@{/html/egovframework/com/cmm/utl/ckeditor/ckeditor.js?t=B37D54V}" ></script> -->
+	<script type="text/javascript" th:src="@{/html/egovframework/com/cmm/utl/ckeditor/ckeditor.js?t=B37D54V}" ></script>
 	<script th:inline="javascript">
 		document.addEventListener('keydown', function(event) {
 			if (event.keyCode === 13) {
@@ -160,7 +160,10 @@
 	</form>
 
 </div>
-
+<!-- CKEditor를 초기화하는 스크립트 -->
+    <script>
+        CKEDITOR.replace('description');
+    </script>
 </body>
 
 </html>
