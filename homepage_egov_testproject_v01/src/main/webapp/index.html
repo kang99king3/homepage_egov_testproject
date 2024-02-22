@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div>
+<div id="container">
+		<h1>TEST PAY</h1>
+		<form action="/user/login" method="post" th:object="${loginCommand}">
+			<input type="email" name="email" placeholder="  email을 입력하세요" th:field="*{email}"/>
+			<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+			<input type="password" name="password" placeholder="  비밀번호를 입력하세요" th:field="*{password}"/>
+			<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+			<input type="submit" value="로그인"/>
+		</form> 
+		<p>
+			<a title="서비스 예정">비밀번호 찾기</a> | 
+			<a title="서비스 예정">아이디 찾기</a> | 
+			<a href="/user/signup">회원가입</a>
+		</p>
+	</div>
+</div>
+</body>
+</html>

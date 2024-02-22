@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layouts"
+      layout:decorate="~{/thymeleaf/layouts/default_layout}">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
@@ -62,7 +64,7 @@
 </head>
 
 <body style="text-align:center; margin:0 auto; display:inline; padding-top:100px;">
-
+<div layout:fragment="content">
     <div id="content_pop">
 
         <!-- Title -->
@@ -139,7 +141,7 @@
         </div>
 
     </div>
-
+</div>
 </body>
 
 </html>

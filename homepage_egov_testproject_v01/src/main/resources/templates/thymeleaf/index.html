@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layouts"
+      layout:decorate="~{layouts/index_layout}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title> 
+<style type="text/css">
+	form > span{font-size:10px;color:red;display:inline-block;}
+	#container{
+		width: 300px;
+		margin: 200px auto;
+	}
+</style>
+</head>
+<body>
+<div layout:fragment="content">
+	<div id="container">
+		<h1>CMS</h1>
+		<form action="/member/login" method="post" th:object="${loginVO}">
+			<input type="text" name="mber_id" placeholder="  ID를 입력하세요" th:field="*{mber_id}"/>
+			<span th:if="${#fields.hasErrors('mber_id')}" th:errors="*{mber_id}"></span>
+			<input type="password" name="password" placeholder="  비밀번호를 입력하세요" th:field="*{password}"/>
+			<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+			<input type="submit" value="로그인"/>
+		</form> 
+		<p>
+			<a title="서비스 예정">비밀번호 찾기</a> | 
+			<a title="서비스 예정">아이디 찾기</a> | 
+			<a href="/user/signup">사용자등록</a>
+		</p>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.example.sample.service.impl.MemberMapper">
+
+	<resultMap id="LoginVO" type="egovframework.example.sample.service.LoginVO">
+		<result property="mber_no" column="MBER_NO"/>
+		<result property="mber_id" column="MBER_ID"/>
+		<result property="password" column="PASSWORD"/>
+		<result property="name" column="NAME"/>
+		<result property="mber_sttus" column="MBER_STTUS"/>
+		<result property="sbscrb_de" column="SBSCRB_DE"/>
+		<result property="role" column="ROLE"/>
+	</resultMap>
+
+	<select id="loginMember" parameterType="loginVO"  resultMap="LoginVO">
+
+		SELECT
+			MBER_NO,MBER_ID,NAME,MBER_STTUS,SBSCRB_DE,ROLE 
+		FROM CMSMEMBER
+		WHERE MBER_ID=#{mber_id} AND PASSWORD=#{password}
+
+	</select>
+
+	
+
+</mapper>

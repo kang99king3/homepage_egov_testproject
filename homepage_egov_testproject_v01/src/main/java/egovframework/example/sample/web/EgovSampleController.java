@@ -2,15 +2,22 @@ package egovframework.example.sample.web;
 
 import egovframework.example.sample.service.EgovFileMngUtil;
 import egovframework.example.sample.service.EgovSampleService;
+import egovframework.example.sample.service.LoginVO;
 import egovframework.example.sample.service.SampleVO;
+import groovyjarjarasm.asm.commons.Method;
+
 import org.egovframe.rte.fdl.property.EgovPropertyService;
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -23,6 +30,8 @@ import javax.validation.Valid;
 @Controller
 public class EgovSampleController {
 
+	Logger logger=LoggerFactory.getLogger(EgovSampleController.class);
+	
 	/** EgovSampleService */
 	@Resource(name = "sampleService")
 	private EgovSampleService sampleService;
@@ -34,11 +43,21 @@ public class EgovSampleController {
 	@Resource(name = "EgovFileMngUtil")
 	private EgovFileMngUtil fileUtil;
 	
+	//로그인없이 게시판 먼저 보여 줄때 
+//	@GetMapping("/")
+//	public String search(@ModelAttribute SampleVO sampleVO, Model model) throws Exception {
+//		return this.list(sampleVO, model);
+//	}
+	
+//  로그인 폼 먼저보여줄때
 	@GetMapping("/")
-	public String search(@ModelAttribute SampleVO sampleVO, Model model) throws Exception {
-		return this.list(sampleVO, model);
+	public String login(@ModelAttribute LoginVO loginVO, Model model) {
+		logger.info("로그인화면");
+		model.addAttribute("loginVO", loginVO);
+		return "index";
 	}
-
+	
+	@RequestMapping(value = "/sample/list",method = {RequestMethod.GET,RequestMethod.POST})
 	@PostMapping("/sample/list")
 	public String list(@ModelAttribute SampleVO sampleVO, Model model) throws Exception {
 		sampleVO.setPageUnit(propertiesService.getInt("pageUnit"));
@@ -61,7 +80,7 @@ public class EgovSampleController {
 		// Pagination
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovSampleList";
+		return "board/egovSampleList";
 	}
 
 	@PostMapping("/sample/detail")
@@ -69,12 +88,12 @@ public class EgovSampleController {
 		sampleVO.setId(id);
 		SampleVO detail = this.sampleService.selectSample(sampleVO);
 		model.addAttribute("sampleVO", detail);
-		return "egovSampleRegister";
+		return "board/egovSampleRegister";
 	}
 
 	@GetMapping("/sample/add")
 	public String form(@ModelAttribute SampleVO sampleVO) {
-		return "egovSampleRegister";
+		return "board/egovSampleRegister";
 	}
 
 	@PostMapping("/sample/add")
@@ -90,7 +109,7 @@ public class EgovSampleController {
 //			atchFileId = fileMngService.insertFileInfs(result);
 		}
 		this.sampleService.insertSample(sampleVO);
-		return "redirect:/";
+		return "redirect:/sample/list";
 	}
 
 	@PostMapping("/sample/update")
@@ -99,13 +118,13 @@ public class EgovSampleController {
 			return "egovSampleRegister";
 		}
 		this.sampleService.updateSample(sampleVO);
-		return "redirect:/";
+		return "redirect:/sample/list";
 	}
 
 	@PostMapping("/sample/delete")
 	public String delete(@ModelAttribute SampleVO sampleVO) throws Exception {
 		this.sampleService.deleteSample(sampleVO);
-		return "redirect:/";
+		return "redirect:/sample/list";
 	}
 
 }
