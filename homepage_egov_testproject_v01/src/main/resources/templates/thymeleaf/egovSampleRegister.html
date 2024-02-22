@@ -162,7 +162,14 @@
 </div>
 <!-- CKEditor를 초기화하는 스크립트 -->
     <script>
-        CKEDITOR.replace('description');
+        CKEDITOR.replace('description',{
+        	toolbar:[
+        		      { name: 'document', items: [ 'Source', '-', 'NewPage', 'Preview', '-', 'Templates' ] },//이름과 도구모음그룹을 정의
+        		      [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ],	// 이름없이 도구모음그룹을 정의
+        		      '/',										// 줄바꿈 - 다음 그룹이 새로운 라인에 배치 됨
+        		      { name: 'basicstyles', items: [ 'Bold', 'Italic' ] }
+        	        ]
+        });
     </script>
 </body>
 
