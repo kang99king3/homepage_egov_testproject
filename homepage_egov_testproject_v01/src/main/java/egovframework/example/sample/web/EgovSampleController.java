@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -126,5 +127,11 @@ public class EgovSampleController {
 		this.sampleService.deleteSample(sampleVO);
 		return "redirect:/sample/list";
 	}
-
+	
+	@GetMapping("/testMapping")
+	@ResponseBody 
+	public String testMapping() { 
+		return "testMapping";
+	}
+	
 }
