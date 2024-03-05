@@ -16,7 +16,7 @@ import java.io.IOException;
 @MapperScan(basePackages="egovframework.example.sample.service.impl")
 public class EgovConfigMapper {
 
-	@Bean
+	@Bean(name = {"sqlSession", "egov.sqlSession"}) //egov.sqlSession을 못찾아 추가해줌
 	public SqlSessionFactoryBean sqlSessionFactory(@Qualifier("dataSource") DataSource dataSource) throws IOException {
 		PathMatchingResourcePatternResolver pmrpr = new PathMatchingResourcePatternResolver();
 		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();

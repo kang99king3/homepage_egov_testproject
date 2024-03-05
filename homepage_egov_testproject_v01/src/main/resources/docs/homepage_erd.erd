@@ -51,8 +51,8 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>40</x>
-              <y>198</y>
+              <x>29</x>
+              <y>179</y>
             </constraint>
             <sourceConnections>
               <net.java.amateras.db.visual.model.ForeignKeyModel reference="../../.."/>
@@ -159,8 +159,8 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>236</x>
-              <y>101</y>
+              <x>237</x>
+              <y>98</y>
             </constraint>
             <sourceConnections>
               <net.java.amateras.db.visual.model.ForeignKeyModel reference="../../.."/>
@@ -293,7 +293,7 @@
             <columns>
               <net.java.amateras.db.visual.model.ColumnModel>
                 <columnName>C_ID</columnName>
-                <logicalName>코스번호</logicalName>
+                <logicalName>CID</logicalName>
                 <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../targetConnections/net.java.amateras.db.visual.model.ForeignKeyModel/source/columns/net.java.amateras.db.visual.model.ColumnModel/columnType"/>
                 <size>10</size>
                 <notNull>true</notNull>
@@ -304,7 +304,7 @@
               </net.java.amateras.db.visual.model.ColumnModel>
               <net.java.amateras.db.visual.model.ColumnModel>
                 <columnName>C_NAME</columnName>
-                <logicalName>과정명</logicalName>
+                <logicalName>C名</logicalName>
                 <columnType class="net.java.amateras.db.dialect.ColumnType">
                   <name>VARCHAR</name>
                   <logicalName>String</logicalName>
@@ -320,7 +320,7 @@
               </net.java.amateras.db.visual.model.ColumnModel>
               <net.java.amateras.db.visual.model.ColumnModel>
                 <columnName>C_CATE</columnName>
-                <logicalName>과정구분</logicalName>
+                <logicalName>CCATE</logicalName>
                 <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
                 <size>10</size>
                 <notNull>true</notNull>
@@ -334,7 +334,7 @@ NTL-1 : 국가기간전략</description>
               </net.java.amateras.db.visual.model.ColumnModel>
               <net.java.amateras.db.visual.model.ColumnModel>
                 <columnName>C_SDATE</columnName>
-                <logicalName>교육시장일정</logicalName>
+                <logicalName>CSDATE</logicalName>
                 <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
                 <size>10</size>
                 <notNull>true</notNull>
@@ -345,7 +345,7 @@ NTL-1 : 국가기간전략</description>
               </net.java.amateras.db.visual.model.ColumnModel>
               <net.java.amateras.db.visual.model.ColumnModel>
                 <columnName>C_EDATE</columnName>
-                <logicalName>교육종료일정</logicalName>
+                <logicalName>CEDATE</logicalName>
                 <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
                 <size>10</size>
                 <notNull>true</notNull>
@@ -356,7 +356,7 @@ NTL-1 : 국가기간전략</description>
               </net.java.amateras.db.visual.model.ColumnModel>
               <net.java.amateras.db.visual.model.ColumnModel>
                 <columnName>C_NUMBER</columnName>
-                <logicalName>모집인원</logicalName>
+                <logicalName>C番号</logicalName>
                 <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../targetConnections/net.java.amateras.db.visual.model.ForeignKeyModel/source/columns/net.java.amateras.db.visual.model.ColumnModel/columnType"/>
                 <size>10</size>
                 <notNull>false</notNull>
@@ -367,7 +367,7 @@ NTL-1 : 국가기간전략</description>
               </net.java.amateras.db.visual.model.ColumnModel>
               <net.java.amateras.db.visual.model.ColumnModel>
                 <columnName>C_MONEY</columnName>
-                <logicalName>훈련수당</logicalName>
+                <logicalName>CMONEY</logicalName>
                 <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
                 <size>10</size>
                 <notNull>false</notNull>
@@ -378,7 +378,7 @@ NTL-1 : 국가기간전략</description>
               </net.java.amateras.db.visual.model.ColumnModel>
               <net.java.amateras.db.visual.model.ColumnModel>
                 <columnName>C_CONTENT</columnName>
-                <logicalName>본문내용</logicalName>
+                <logicalName>C内容</logicalName>
                 <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../targetConnections/net.java.amateras.db.visual.model.ForeignKeyModel/source/columns/net.java.amateras.db.visual.model.ColumnModel[3]/columnType"/>
                 <size>10</size>
                 <notNull>true</notNull>
@@ -389,7 +389,7 @@ NTL-1 : 국가기간전략</description>
               </net.java.amateras.db.visual.model.ColumnModel>
               <net.java.amateras.db.visual.model.ColumnModel>
                 <columnName>C_THUMB</columnName>
-                <logicalName>썸네일위치</logicalName>
+                <logicalName>CTHUMB</logicalName>
                 <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
                 <size>100</size>
                 <notNull>true</notNull>
@@ -400,7 +400,7 @@ NTL-1 : 국가기간전략</description>
               </net.java.amateras.db.visual.model.ColumnModel>
               <net.java.amateras.db.visual.model.ColumnModel>
                 <columnName>C_USE</columnName>
-                <logicalName>사용여부</logicalName>
+                <logicalName>CUSE</logicalName>
                 <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
                 <size>1</size>
                 <notNull>true</notNull>
@@ -411,7 +411,7 @@ NTL-1 : 국가기간전략</description>
               </net.java.amateras.db.visual.model.ColumnModel>
               <net.java.amateras.db.visual.model.ColumnModel>
                 <columnName>M_NO</columnName>
-                <logicalName>회원번호</logicalName>
+                <logicalName>M番号</logicalName>
                 <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../targetConnections/net.java.amateras.db.visual.model.ForeignKeyModel/source/columns/net.java.amateras.db.visual.model.ColumnModel/columnType"/>
                 <size>10</size>
                 <notNull>true</notNull>

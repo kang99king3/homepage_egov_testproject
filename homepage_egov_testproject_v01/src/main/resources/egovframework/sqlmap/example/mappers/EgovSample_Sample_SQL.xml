@@ -10,7 +10,8 @@
 		<result property="regUser" column="reg_user"/>
 	</resultMap>
 
-	<insert id="insertSample" parameterType="SampleVO">
+	<insert id="insertSample" parameterType="SampleVO"
+	keyProperty="id" useGeneratedKeys="true">
 
 			INSERT INTO SAMPLE
 				( ID

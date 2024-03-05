@@ -1,7 +1,9 @@
 package egovframework.example.sample.web;
 
+import egovframework.example.sample.service.EgovFileMngService;
 import egovframework.example.sample.service.EgovFileMngUtil;
 import egovframework.example.sample.service.EgovSampleService;
+import egovframework.example.sample.service.FileVO;
 import egovframework.example.sample.service.LoginVO;
 import egovframework.example.sample.service.SampleVO;
 import groovyjarjarasm.asm.commons.Method;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -43,6 +46,9 @@ public class EgovSampleController {
 
 	@Resource(name = "EgovFileMngUtil")
 	private EgovFileMngUtil fileUtil;
+	
+	@Resource(name = "EgovFileMngService")
+	private EgovFileMngService fileMngService;
 	
 	//로그인없이 게시판 먼저 보여 줄때 
 //	@GetMapping("/")
@@ -92,24 +98,32 @@ public class EgovSampleController {
 		return "board/egovSampleRegister";
 	}
 
+	//게시판 글등록 폼
 	@GetMapping("/sample/add")
 	public String form(@ModelAttribute SampleVO sampleVO) {
 		return "board/egovSampleRegister";
 	}
 
+	//게시판 글등록
 	@PostMapping("/sample/add")
 	public String add(@Valid @ModelAttribute SampleVO sampleVO, BindingResult bindingResult
 			         ,final MultipartHttpServletRequest multiRequest) throws Exception {
 		if (bindingResult.hasErrors()) {
 			return "egovSampleRegister";
 		}
+		
+		List<FileVO> result=null;//업로드된 파일의 정보를 저장
+		String atchFileId = "";
+		
+		this.sampleService.insertSample(sampleVO);//게시글 DB에 추가 요청
+
 		final Map<String, MultipartFile> files = multiRequest.getFileMap();
 		System.out.println("file:"+files.get("file_1").getName());
 		if (!files.isEmpty()) {
-			fileUtil.parseFileInf(files, "BBS_", 0, "", "");
-//			atchFileId = fileMngService.insertFileInfs(result);
+//			Map<String, MultipartFile> files, String KeyStr, int fileKeyParam, String atchFileId, String storePath
+			result=fileUtil.parseFileInf(files, "BBS_", 0, sampleVO.getId(), "");
+			atchFileId = fileMngService.insertFileInfs(result);
 		}
-		this.sampleService.insertSample(sampleVO);
 		return "redirect:/sample/list";
 	}
 

@@ -99,8 +99,8 @@ public class EgovFileMngUtil {
 	    
 		int index = orginFileName.lastIndexOf(".");
 	    //String fileName = orginFileName.substring(0, index);
-	    String fileExt = orginFileName.substring(index + 1);
-	    String newName = KeyStr + EgovStringUtil.getTimeStamp() + fileKey;
+	    String fileExt = orginFileName.substring(index + 1);//파일확장자 추출
+	    String newName = KeyStr + EgovStringUtil.getTimeStamp() + fileKey+"."+fileExt;//새로운 파일명 생성
 	    long _size = file.getSize();
 
 	    if (!"".equals(orginFileName)) {
